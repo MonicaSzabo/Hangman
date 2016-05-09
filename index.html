@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Star Wars Hangman</title>
+</head>
+<body>
+	<h1>Press any key to get started!</h1>
+	<div id="game"></div>
+
+	<script type="text/javascript">
+
+	var wordBank = ["wookie", "skywalker"];		//Words It Can Be
+	var guessWord = "";				//Empty String, will hold their guesses
+	var turns = 10;					//How many turns left
+	var wins = 0;					//How many wins
+	var lettersTried = [];			//Letters they have guessed
+
+	var currentWord = wordBank[Math.floor(Math.random()*wordBank.length)];
+
+	for(var i = 0; i < currentWord.length; i++) {
+		guessWord = guessWord + "_";
+	}
+
+	function replaceLetter(str, i, letter) {
+		if(i > str.length-1) {
+			return str;
+		}
+		return str.substr(0, i) + letter + str.substr(i + 1);
+	}
+
+	function inArray(letter, arr) {
+		for(var i = 0; i < arr.length; i++) {
+			if(arr[i] == letter) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	console.log(currentWord);
+	console.log(guessWord);
+		
+	document.onkeyup = function(event) {
+		var letter = String.fromCharCode(event.keyCode).toLowerCase();
+		var inWord = false;
+
+		for(var i = 0; i < currentWord.length; i++) {
+			if(letter == currentWord[i]) {
+				guessWord = replaceLetter(guessWord, i, letter);
+				inWord = true;
+				console.log(guessWord);
+			}
+		}
+		if(!inWord) {
+			if(!inArray(letter, lettersTried)) {
+				lettersTried.push(letter);
+				turns--;
+			}
+			console.log(lettersTried);
+		}
+		console.log(turns);
+
+		if(guessWord.indexOf("_") === -1) {
+			wins++;
+			console.log(wins);
+		}
+		
+		var html = "Current Word: " + guessWord +
+			"<br> Number of Guesses: " + turns +
+			"<br> Letters Already Guessed: " + lettersTried +
+			"<br> Wins: " + wins;
+
+		document.querySelector('#game').innerHTML = html;
+	}
+
+
+	</script>
+</body>
+</html>
