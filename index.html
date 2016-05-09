@@ -8,10 +8,11 @@
 	<h1>Star Wars Hangman</h1>
 	<h3>Press any key to get started!</h3>
 	<div id="game"></div>
+	<div id="outcome"></div>
 
 	<script type="text/javascript">
 
-	var wordBank = ["wookie", "skywalker"];		//Words It Can Be
+	var wordBank = ["wookie", "skywalker", "droid", "galaxy"];		//Words It Can Be
 	var wins = 0;					//How many wins
 	var guessWord = "";				//Empty String, will hold their guesses
 	var turns = 10;					//How many turns left
@@ -39,6 +40,16 @@
 		return false;
 	}
 
+	function reset() {
+		currentWord = wordBank[Math.floor(Math.random()*wordBank.length)];
+		guessWord = "";
+		for(var i = 0; i < currentWord.length; i++) {
+			guessWord = guessWord + "_";
+		}
+		turns = 10;
+		lettersTried = [];
+	}
+
 	console.log(currentWord);
 	console.log(guessWord);
 		
@@ -61,12 +72,13 @@
 		}
 
 		if(turns == 0) {
-			console.log("You lose");
+			alert("You lost! Try again!");
+			reset();
 		}
 
 		if(guessWord.indexOf("_") === -1) {
 			wins++;
-			console.log(wins);
+			reset();
 		}
 
 		var html = "Current Word: " + guessWord +
