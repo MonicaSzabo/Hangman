@@ -5,15 +5,16 @@
 	<title>Star Wars Hangman</title>
 </head>
 <body>
-	<h1>Press any key to get started!</h1>
+	<h1>Star Wars Hangman</h1>
+	<h3>Press any key to get started!</h3>
 	<div id="game"></div>
 
 	<script type="text/javascript">
 
 	var wordBank = ["wookie", "skywalker"];		//Words It Can Be
+	var wins = 0;					//How many wins
 	var guessWord = "";				//Empty String, will hold their guesses
 	var turns = 10;					//How many turns left
-	var wins = 0;					//How many wins
 	var lettersTried = [];			//Letters they have guessed
 
 	var currentWord = wordBank[Math.floor(Math.random()*wordBank.length)];
@@ -57,15 +58,17 @@
 				lettersTried.push(letter);
 				turns--;
 			}
-			console.log(lettersTried);
 		}
-		console.log(turns);
+
+		if(turns == 0) {
+			console.log("You lose");
+		}
 
 		if(guessWord.indexOf("_") === -1) {
 			wins++;
 			console.log(wins);
 		}
-		
+
 		var html = "Current Word: " + guessWord +
 			"<br> Number of Guesses: " + turns +
 			"<br> Letters Already Guessed: " + lettersTried +
@@ -73,6 +76,7 @@
 
 		document.querySelector('#game').innerHTML = html;
 	}
+
 
 
 	</script>
