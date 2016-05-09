@@ -1,0 +1,15 @@
+* {
+	background-color: black;
+	color: white;
+}
+
+h1 {
+	color: yellow;
+	font-weight: bolder;
+	text-align: center;
+	font-size: 56px;
+}
+
+body {
+	margin: 0 auto;	
+}

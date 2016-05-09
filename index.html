@@ -3,16 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Star Wars Hangman</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
 	<h1>Star Wars Hangman</h1>
-	<h3>Press any key to get started!</h3>
+	<h3>Guess a letter in the word!</h3>
 	<div id="game"></div>
-	<div id="outcome"></div>
 
 	<script type="text/javascript">
 
-	var wordBank = ["wookie", "skywalker", "droid", "galaxy"];		//Words It Can Be
+	var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks", "tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine", "yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah", "hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey", "finn", "poe", "fett", "jango", "boba"];		//Words It Can Be
 	var wins = 0;					//How many wins
 	var guessWord = "";				//Empty String, will hold their guesses
 	var turns = 10;					//How many turns left
@@ -23,6 +24,11 @@
 	for(var i = 0; i < currentWord.length; i++) {
 		guessWord = guessWord + "_";
 	}
+
+	document.querySelector('#game').innerHTML = "Current Word: " + guessWord +
+			"<br> Number of Guesses: " + turns +
+			"<br> Letters Already Guessed: " + lettersTried +
+			"<br> Wins: " + wins;
 
 	function replaceLetter(str, i, letter) {
 		if(i > str.length-1) {
@@ -49,9 +55,6 @@
 		turns = 10;
 		lettersTried = [];
 	}
-
-	console.log(currentWord);
-	console.log(guessWord);
 		
 	document.onkeyup = function(event) {
 		var letter = String.fromCharCode(event.keyCode).toLowerCase();
@@ -61,14 +64,11 @@
 			if(letter == currentWord[i]) {
 				guessWord = replaceLetter(guessWord, i, letter);
 				inWord = true;
-				console.log(guessWord);
 			}
 		}
-		if(!inWord) {
-			if(!inArray(letter, lettersTried)) {
-				lettersTried.push(letter);
-				turns--;
-			}
+		if(!inWord && !inArray(letter, lettersTried)) {
+			lettersTried.push(letter);
+			turns--;
 		}
 
 		if(turns == 0) {
@@ -88,7 +88,6 @@
 
 		document.querySelector('#game').innerHTML = html;
 	}
-
 
 
 	</script>
