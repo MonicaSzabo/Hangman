@@ -1,15 +1,36 @@
 * {
 	background-color: black;
 	color: white;
+	margin: 0 auto;
+	text-align: center;
 }
 
 h1 {
-	color: yellow;
+	color: #fdb45d;
 	font-weight: bolder;
-	text-align: center;
 	font-size: 56px;
+	font-family: 'Stalinist One', cursive;
+	margin: -20px;
+}
+
+h3 {
+	font-family: 'Kanit', sans-serif;
+	font-weight: bolder;
+	margin: 50px;
 }
 
 body {
 	margin: 0 auto;	
+}
+
+#logo {
+	width: 300px;
+	margin: -20px;
+}
+
+#game {
+	font-family: 'Kanit', sans-serif;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin: 20px;
 }

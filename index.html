@@ -5,9 +5,12 @@
 	<title>Star Wars Hangman</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Stalinist+One' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Kanit:900' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<h1>Star Wars Hangman</h1>
+	<img src="assets/images/star-wars-logo.jpg" alt="star wars" id="logo">
+	<h1>Hangman</h1>
 	<h3>Guess a letter in the word!</h3>
 	<div id="game"></div>
 
@@ -16,7 +19,7 @@
 	var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks", "tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine", "yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah", "hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey", "finn", "poe", "fett", "jango", "boba"];		//Words It Can Be
 	var wins = 0;					//How many wins
 	var guessWord = "";				//Empty String, will hold their guesses
-	var turns = 10;					//How many turns left
+	var turns = 12;					//How many turns left
 	var lettersTried = [];			//Letters they have guessed
 
 	var currentWord = wordBank[Math.floor(Math.random()*wordBank.length)];
@@ -25,10 +28,10 @@
 		guessWord = guessWord + "_";
 	}
 
-	document.querySelector('#game').innerHTML = "Current Word: " + guessWord +
-			"<br> Number of Guesses: " + turns +
-			"<br> Letters Already Guessed: " + lettersTried +
-			"<br> Wins: " + wins;
+	document.querySelector('#game').innerHTML = "Current Word:<br>" + guessWord +
+			"<br><br> Number of Guesses:<br>" + turns +
+			"<br><br> Letters Already Guessed:<br>" + lettersTried +
+			"<br><br>Wins:<br>" + wins;
 
 	function replaceLetter(str, i, letter) {
 		if(i > str.length-1) {
@@ -52,7 +55,7 @@
 		for(var i = 0; i < currentWord.length; i++) {
 			guessWord = guessWord + "_";
 		}
-		turns = 10;
+		turns = 12;
 		lettersTried = [];
 	}
 		
@@ -81,10 +84,10 @@
 			reset();
 		}
 
-		var html = "Current Word: " + guessWord +
-			"<br> Number of Guesses: " + turns +
-			"<br> Letters Already Guessed: " + lettersTried +
-			"<br> Wins: " + wins;
+		var html = "Current Word:<br>" + guessWord +
+			"<br><br> Number of Guesses:<br>" + turns +
+			"<br><br> Letters Already Guessed:<br>" + lettersTried +
+			"<br><br>Wins:<br>" + wins;
 
 		document.querySelector('#game').innerHTML = html;
 	}
