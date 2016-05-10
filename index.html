@@ -116,6 +116,8 @@
 
 		if(turns == 0) {
 			alert("Aldaraan has been destroyed!  Try again!");
+			var audio = new Audio('assets/AldaraanExplosion.mp3');
+			audio.play();
 			reset();
 			changeImage(turns);
 		}
