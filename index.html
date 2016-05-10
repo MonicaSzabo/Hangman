@@ -11,12 +11,15 @@
 <body>
 	<img src="assets/images/star-wars-logo.jpg" alt="star wars" id="logo">
 	<h1>Hangman</h1>
-	<h3>Guess a letter in the word!</h3>
-	<div id="game"></div>
+	<h3>Only you can save the innocent planet of Aldaraan!  Press any key to get started!</h3>
+	<div id="theMiddle">
+		<div id="planet"><img src="assets/images/aldaraan01.jpg" alt="Aldaraan" id="aldaraan"></div>
+		<div id="game"></div>
+	</div>
 
 	<script type="text/javascript">
 
-	var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks", "tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine", "yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah", "hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey", "finn", "poe", "fett", "jango", "boba"];		//Words It Can Be
+	var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks", "tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine", "yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah", "hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey", "finn", "poe", "fett", "jango", "boba", "blaster", "alderaan"];		//Words It Can Be
 	var wins = 0;					//How many wins
 	var guessWord = "";				//Empty String, will hold their guesses
 	var turns = 12;					//How many turns left
@@ -32,6 +35,7 @@
 			"<br><br> Number of Guesses:<br>" + turns +
 			"<br><br> Letters Already Guessed:<br>" + lettersTried +
 			"<br><br>Wins:<br>" + wins;
+
 
 	function replaceLetter(str, i, letter) {
 		if(i > str.length-1) {
@@ -58,6 +62,33 @@
 		turns = 12;
 		lettersTried = [];
 	}
+
+	function changeImage(turns) {
+		if(turns == 12) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan01.jpg";
+		}
+		else if(turns == 10) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan02.jpg";
+		}
+		else if(turns == 8) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan03.jpg";
+		}
+		else if(turns == 6) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan04.jpg";
+		}
+		else if(turns == 4) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan05.jpg";
+		}
+		else if(turns == 2) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan06.jpg";
+		}
+		else if(turns == 1) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan07.jpg";
+		}
+		else if(turns == 0) {
+			document.getElementById("aldaraan").src = "assets/images/aldaraan08.jpg";
+		}
+	}
 		
 	document.onkeyup = function(event) {
 		var letter = String.fromCharCode(event.keyCode).toLowerCase();
@@ -74,14 +105,19 @@
 			turns--;
 		}
 
+		changeImage(turns);
+
 		if(turns == 0) {
-			alert("You lost! Try again!");
+			alert("You lost and Aldaraan is destroyed!  Try again!");
 			reset();
+			changeImage(turns);
 		}
 
 		if(guessWord.indexOf("_") === -1) {
+			alert("You won and saved Aldaraan!  Good job!");
 			wins++;
 			reset();
+			changeImage(turns);
 		}
 
 		var html = "Current Word:<br>" + guessWord +

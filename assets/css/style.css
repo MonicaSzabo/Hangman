@@ -28,9 +28,23 @@ body {
 	margin: -20px;
 }
 
+#theMiddle {
+	width: 600px;
+	margin: 0 auto;
+}
+
 #game {
 	font-family: 'Kanit', sans-serif;
 	font-weight: bold;
 	letter-spacing: 2px;
 	margin: 20px;
+	float: right;
+}
+
+#planet {
+	float: left;
+}
+
+#aldaraan {
+	width: 300px;
 }
