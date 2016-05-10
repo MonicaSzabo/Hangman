@@ -89,7 +89,7 @@
 			document.getElementById("aldaraan").src = "assets/images/aldaraan08.jpg";
 		}
 	}
-		
+
 	document.onkeyup = function(event) {
 		var letter = String.fromCharCode(event.keyCode).toLowerCase();
 		var inWord = false;
@@ -107,15 +107,15 @@
 
 		changeImage(turns);
 
-		if(turns == 0) {
-			alert("You lost and Aldaraan is destroyed!  Try again!");
+		if(guessWord.indexOf("_") === -1) {
+			alert("You won and saved Aldaraan!  Good job!");
+			wins++;
 			reset();
 			changeImage(turns);
 		}
 
-		if(guessWord.indexOf("_") === -1) {
-			alert("You won and saved Aldaraan!  Good job!");
-			wins++;
+		if(turns == 0) {
+			alert("Aldaraan has been destroyed!  Try again!");
 			reset();
 			changeImage(turns);
 		}
@@ -126,6 +126,7 @@
 			"<br><br>Wins:<br>" + wins;
 
 		document.querySelector('#game').innerHTML = html;
+
 	}
 
 
