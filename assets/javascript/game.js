@@ -52,25 +52,25 @@ function reset() {
 
 function changeImage(turns) {
 	if(turns == 12) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan01.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan01.jpg";
 	}
 	else if(turns == 10) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan02.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan02.jpg";
 	}
 	else if(turns == 8) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan03.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan03.jpg";
 	}
 	else if(turns == 6) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan04.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan04.jpg";
 	}
 	else if(turns == 4) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan05.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan05.jpg";
 	}
 	else if(turns == 2) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan06.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan06.jpg";
 	}
 	else if(turns == 1) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan07.jpg";
+		document.getElementById("alderaan").src = "assets/images/aldaraan07.jpg";
 	}
 }
 
