@@ -1,8 +1,11 @@
-var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks",
+var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "princess", "ewoks",
 	"tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine",
 	"yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah",
 	"hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey",
-	"finn", "poe", "fett", "jango", "boba", "blaster", "alderaan"];		//Words It Can Be
+	"finn", "poe", "fett", "jango", "boba", "blaster", "alderaan", "darth", "midichlorian", "clone",
+	"kylo", "phasma", "captain", "pilot", "queen", "solo", "dameron", "hux", "fighter", "sarlacc",
+	"jabba", "empire", "emperor", "sidious", "maul", "wampa", "galactic", "order", "dark", "light",
+	"endor", "dooku", "battle", "grievous", "podracing", "stormtrooper", "amidala"];		//Words It Can Be
 var wins = 0;					//How many wins
 var guessWord = "";				//Empty String, will hold their guesses
 var turns = 12;					//How many turns left
