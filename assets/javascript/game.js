@@ -1,4 +1,8 @@
-var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks", "tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine", "yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah", "hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey", "finn", "poe", "fett", "jango", "boba", "blaster", "alderaan"];		//Words It Can Be
+var wordBank = ["wookie", "skywalker", "droid", "galaxy", "jedi", "podracing", "ewoks",
+	"tauntaun", "lando", "master", "destroyer", "sandpeople", "padme", "tatooine", "palpatine",
+	"yoda", "chewbacca", "kenobi", "lightsaber", "jawa", "han", "anakin", "vader", "dagobah",
+	"hutt", "sith", "knight", "force", "republic", "ship", "rebel", "hoth", "luke", "leia", "rey",
+	"finn", "poe", "fett", "jango", "boba", "blaster", "alderaan"];		//Words It Can Be
 var wins = 0;					//How many wins
 var guessWord = "";				//Empty String, will hold their guesses
 var turns = 12;					//How many turns left
@@ -11,16 +15,16 @@ for(var i = 0; i < currentWord.length; i++) {
 }
 
 document.querySelector('#game').innerHTML = "Current Word:<br>" + guessWord +
-"<br><br> Number of Guesses:<br>" + turns +
-"<br><br> Letters Already Guessed:<br>" + lettersTried +
-"<br><br>Wins:<br>" + wins;
+	"<br><br> Number of Guesses:<br>" + turns +
+	"<br><br> Letters Already Guessed:<br>" + lettersTried +
+	"<br><br>Wins:<br>" + wins;
 
 
 function replaceLetter(str, i, letter) {
-if(i > str.length-1) {	//Just in case errors, should never run
-	return str;
-}
-return str.substr(0, i) + letter + str.substr(i + 1);
+	if(i > str.length-1) {	//Just in case errors, should never run
+		return str;
+	}
+	return str.substr(0, i) + letter + str.substr(i + 1);
 }
 
 function inArray(letter, arr) {
@@ -88,22 +92,24 @@ document.onkeyup = function(event) {
 	changeImage(turns);
 
 	if(guessWord.indexOf("_") === -1) {
-		alert("You won and saved Aldaraan!  Good job!");
+		// alert("You won and saved Aldaraan!  Good job!");
+		var winning = new Audio('assets/youwon.mp3');
+		winning.play();
 		wins++;
 		reset();
 	}
 
 	if(turns == 0) {
-		alert("Aldaraan has been destroyed!  Try again!");
-		var explosion = new Audio('assets/AldaraanExplosion.mp3');
+		// alert("Aldaraan has been destroyed!  Try again!");
+		var explosion = new Audio('assets/youlost.mp3');
 		explosion.play();
 		reset();
 	}
 
 	var html = "Current Word:<br>" + guessWord +
-	"<br><br> Number of Guesses:<br>" + turns +
-	"<br><br> Letters Already Guessed:<br>" + lettersTried +
-	"<br><br>Wins:<br>" + wins;
+		"<br><br> Number of Guesses:<br>" + turns +
+		"<br><br> Letters Already Guessed:<br>" + lettersTried +
+		"<br><br>Wins:<br>" + wins;
 
 	document.querySelector('#game').innerHTML = html;
 
