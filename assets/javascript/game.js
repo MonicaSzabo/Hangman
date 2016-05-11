@@ -69,9 +69,59 @@ function changeImage(turns) {
 	else if(turns == 1) {
 		document.getElementById("aldaraan").src = "assets/images/aldaraan07.jpg";
 	}
-	else if(turns == 0) {
-		document.getElementById("aldaraan").src = "assets/images/aldaraan08.jpg";
+}
+
+//Functions to create win/lose pop ups
+function toggle(div_id) {
+	var el = document.getElementById(div_id);
+	if ( el.style.display == 'none' ) {	el.style.display = 'block';}
+	else {el.style.display = 'none';}
+}
+function blanket_size(popUpDivVar) {
+	if (typeof window.innerWidth != 'undefined') {
+		viewportheight = window.innerHeight;
+	} else {
+		viewportheight = document.documentElement.clientHeight;
 	}
+	if ((viewportheight > document.body.parentNode.scrollHeight) && (viewportheight > document.body.parentNode.clientHeight)) {
+		blanket_height = viewportheight;
+	} else {
+		if (document.body.parentNode.clientHeight > document.body.parentNode.scrollHeight) {
+			blanket_height = document.body.parentNode.clientHeight;
+		} else {
+			blanket_height = document.body.parentNode.scrollHeight;
+		}
+	}
+	var blanket = document.getElementById('blanket');
+	blanket.style.height = blanket_height + 'px';
+	var popUpDiv = document.getElementById(popUpDivVar);
+	popUpDiv_height=blanket_height/2-128;//128 is half popup's height, pic 600x256
+	popUpDiv.style.top = popUpDiv_height + 'px';
+}
+function window_pos(popUpDivVar) {
+	if (typeof window.innerWidth != 'undefined') {
+		viewportwidth = window.innerHeight;
+	} else {
+		viewportwidth = document.documentElement.clientHeight;
+	}
+	if ((viewportwidth > document.body.parentNode.scrollWidth) && (viewportwidth > document.body.parentNode.clientWidth)) {
+		window_width = viewportwidth;
+	} else {
+		if (document.body.parentNode.clientWidth > document.body.parentNode.scrollWidth) {
+			window_width = document.body.parentNode.clientWidth;
+		} else {
+			window_width = document.body.parentNode.scrollWidth;
+		}
+	}
+	var popUpDiv = document.getElementById(popUpDivVar);
+	window_width=window_width/2-300;//300 is half popup's width, pic 600x256
+	popUpDiv.style.left = window_width + 'px';
+}
+function popup(windowname) {
+	blanket_size(windowname);
+	window_pos(windowname);
+	toggle('blanket');
+	toggle(windowname);		
 }
 
 document.onkeyup = function(event) {
@@ -92,7 +142,7 @@ document.onkeyup = function(event) {
 	changeImage(turns);
 
 	if(guessWord.indexOf("_") === -1) {
-		// alert("You won and saved Aldaraan!  Good job!");
+		popup('popUpDiv2');
 		var winning = new Audio('assets/youwon.mp3');
 		winning.play();
 		wins++;
@@ -100,7 +150,7 @@ document.onkeyup = function(event) {
 	}
 
 	if(turns == 0) {
-		// alert("Aldaraan has been destroyed!  Try again!");
+		popup('popUpDiv');
 		var explosion = new Audio('assets/youlost.mp3');
 		explosion.play();
 		reset();

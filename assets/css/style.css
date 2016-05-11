@@ -45,3 +45,43 @@ h3 {
 #aldaraan {
 	width: 300px;
 }
+
+#blanket {
+	background-color:#111;
+	opacity: 0.65;
+	*background:none;
+	position:absolute;
+	z-index: 9001;
+	top:0px;
+	left:0px;
+	width:100%;
+}
+
+#popUpDiv {
+	position:absolute;
+	background:url(../images/aldaraan08.jpg) no-repeat;
+	width:600px;
+	height:256px;
+	border:5px solid #000;
+	z-index: 9002;
+}
+
+#popUpDiv2 {
+	position:absolute;
+	background:url(../images/winning.jpg) no-repeat;
+	width:600px;
+	height:256px;
+	border:5px solid #000;
+	z-index: 9002;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	font-family: 'Kanit', sans-serif;
+	font-size: 26px;
+}
+
+a:hover {
+	color: #fdb45d;
+}
