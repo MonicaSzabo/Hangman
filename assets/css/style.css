@@ -16,7 +16,8 @@ h1 {
 h3 {
 	font-family: 'Kanit', sans-serif;
 	font-weight: bolder;
-	margin: 50px;
+	font-size: 22px;
+	margin: 40px;
 }
 
 
@@ -26,13 +27,14 @@ h3 {
 }
 
 #theMiddle {
-	width: 600px;
+	width: 700px;
 	margin: 0 auto;
 }
 
 #game {
 	font-family: 'Kanit', sans-serif;
-	font-weight: bold;
+/*	font-weight: bold;*/
+	font-size: 20px;
 	letter-spacing: 2px;
 	margin: 20px;
 	float: right;
@@ -79,7 +81,7 @@ a {
 	color: #fff;
 	text-decoration: none;
 	font-family: 'Kanit', sans-serif;
-	font-size: 26px;
+	font-size: 21px;
 }
 
 a:hover {
