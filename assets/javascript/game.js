@@ -165,5 +165,4 @@ document.onkeyup = function(event) {
 		"<br><br>Wins:<br>" + wins;
 
 	document.querySelector('#game').innerHTML = html;
-
 }
